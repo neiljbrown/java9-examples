@@ -1,0 +1,37 @@
+// *********************************************************************************************************************
+// Enable plugins
+// *********************************************************************************************************************
+apply plugin: 'java'
+apply plugin: 'idea'
+
+// *********************************************************************************************************************
+// Project Properties
+// *********************************************************************************************************************
+// Standard project properties. These are used as default values by some assembly and release task, e.g. jar
+
+//project.name - Property defined in settings.gradle, overridding the default used by Gradle which is based on proj dir
+project.group = 'com.neiljbrown.examples'
+project.description = 'Java 9 code examples'
+project.version = '1.0'
+
+// Set Java source & class versions to use when compiling. Needs to be defined after applying java plugin to take affect
+project.sourceCompatibility = 8
+project.targetCompatibility = 8
+
+// Extra user-defined project properties
+ext {
+
+}
+
+// *********************************************************************************************************************
+// Task configuration
+// *********************************************************************************************************************
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    //---- Test dependencies
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+    testCompile('org.assertj:assertj-core:3.8.0')
+}
