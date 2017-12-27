@@ -3,7 +3,9 @@
 .idea
 .project
 .settings
+*.ipr
+*.iml
+*.iws
 bin
 build
 out
-restassured-example.iml
