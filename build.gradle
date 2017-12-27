@@ -1,8 +1,35 @@
+/*
+ *  Copyright 2014-present the original author or authors.
+ *
+ *  Licensed under the Apache License, Version 2.0 (the "License");
+ *  you may not use this file except in compliance with the License.
+ *  You may obtain a copy of the License at
+ *
+ *        http://www.apache.org/licenses/LICENSE-2.0
+ *
+ *  Unless required by applicable law or agreed to in writing, software
+ *  distributed under the License is distributed on an "AS IS" BASIS,
+ *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *  See the License for the specific language governing permissions and
+ *  limitations under the License.
+ */
+
+buildscript {
+  repositories {
+    mavenCentral()
+  }
+
+  dependencies {
+    classpath('org.junit.platform:junit-platform-gradle-plugin:1.0.2')
+  }
+}
+
 // *********************************************************************************************************************
 // Enable plugins
 // *********************************************************************************************************************
 apply plugin: 'java'
 apply plugin: 'idea'
+apply plugin: 'org.junit.platform.gradle.plugin'
 
 // *********************************************************************************************************************
 // Project Properties
@@ -15,12 +42,18 @@ project.description = 'Java 9 code examples'
 project.version = '1.0'
 
 // Set Java source & class versions to use when compiling. Needs to be defined after applying java plugin to take affect
-project.sourceCompatibility = 8
-project.targetCompatibility = 8
+project.sourceCompatibility = 9
+project.targetCompatibility = 9
 
 // Extra user-defined project properties
 ext {
+  junitJupiterVersion = '5.0.2'
 
+  // Cribbed from https://github.com/mindscratch/reactor-offline/blob/master/build.gradle
+  javadocLinks = [
+    "http://docs.oracle.com/javase/9/docs/api/",
+    "http://junit.org/junit5/docs/current/api/"
+  ] as String[]
 }
 
 // *********************************************************************************************************************
@@ -31,7 +64,23 @@ repositories {
 }
 
 dependencies {
-    //---- Test dependencies
-    testCompile group: 'junit', name: 'junit', version: '4.12'
-    testCompile('org.assertj:assertj-core:3.8.0')
+  // Test dependencies
+  testCompile("org.junit.jupiter:junit-jupiter-api:${junitJupiterVersion}")
+  // Workaround for JUnit 5 bug. Suppress warnings output on compiling test classes reporting that classes (enums) that
+  // JUnit 5 depends upon can't be found. See https://github.com/junit-team/junit5/issues/1065
+  testCompileOnly('org.apiguardian:apiguardian-api:1.0.0')
+  testCompile('org.assertj:assertj-core:3.8.0')
+
+  testRuntime("org.junit.jupiter:junit-jupiter-engine:${junitJupiterVersion}")
+}
+
+// *********************************************************************************************************************
+// Tasks
+// *********************************************************************************************************************
+
+// Custom task for running javadoc on Java classes in src/test/java
+task javadocTests(type: Javadoc) {
+  source = sourceSets.test.allJava
+  classpath = configurations.testCompile
+  options.links(project.ext.javadocLinks)
 }
