@@ -27,9 +27,14 @@ import java.util.*;
  * A JUnit (5) test case providing examples of how some of the main collection classes have been enhanced to provide
  * static factory methods to simplify the code for creating <i>immutable</i> collections.
  * <p>
- * Note, that tbese new factory methods are <i>not</i> defined on the {@link java.util.Collection} interface, or part
+ * Note, that these new factory methods are <i>not</i> defined on the {@link java.util.Collection} interface, or part
  * of the {@link java.util.Collections} utility class, but have rather been retrofitted on selective collection
- * interfaces - {@link java.util.List}, {@link java.util.Set} and {@link java.util.Map}.
+ * interfaces - {@link java.util.List}, {@link java.util.Set} and {@link java.util.Map}. This has been achieved
+ * without breaking backwards compatibility by providing 'default’ method implementations in List, Set and Map
+ * interfaces.
+ * <p>
+ * There are no. of overloaded versions of these static factory methods each accepting an increasing no. of collection
+ * elements, plus a varargs version of the method supporting an arbitrary no. of elements.
  */
 class CollectionStaticFactoryMethodsTest {
 
