@@ -55,10 +55,12 @@ class CollectionStaticFactoryMethodsTest {
     letters.add("b");
     letters.add("c");
     letters = Collections.unmodifiableList(letters);
+
     assertThat(letters).containsOnly("a", "b", "c");
 
     // J8 code - terser option using Arrays.asList()...
     letters = Arrays.asList("a", "b", "c");
+
     assertThat(letters).containsOnly("a", "b", "c");
     // ...but the created class of List although a fixed-size isn't truly immutable, as existing elements can be changed
     letters.set(2, "d");
@@ -66,6 +68,7 @@ class CollectionStaticFactoryMethodsTest {
 
     // J9 code
     final List<String> moreLetters = List.of("a", "b", "c");
+
     assertThat(moreLetters).containsOnly("a", "b", "c");
     // And list is truly immutable - you can't change the existing element values either
     assertThatThrownBy(() -> {
@@ -91,10 +94,12 @@ class CollectionStaticFactoryMethodsTest {
     letters.add("b");
     letters.add("c");
     letters = Collections.unmodifiableSet(letters);
+
     assertThat(letters).containsOnly("a", "b", "c");
 
     // J9 code
     letters = Set.of("a", "b", "c"); // undefined order
+
     assertThat(letters).containsOnly("a", "b", "c");
   }
 
@@ -118,10 +123,12 @@ class CollectionStaticFactoryMethodsTest {
     letters.put("b", "B");
     letters.put("c", "C");
     letters = Collections.unmodifiableMap(letters);
+
     assertThat(letters).contains(entry("a", "A"), entry("b","B"), entry("c", "C"));
 
     // J9 code - The list of values is a sequentially specified key and value pairs -
     final Map<String, String> moreLetters = Map.of("a", "A", "b", "B", "c", "C");
+
     assertThat(moreLetters).contains(entry("a", "A"), entry("b","B"), entry("c", "C"));
     // And Map is truly immutable - you can't change add new elements...
     assertThatThrownBy(() -> {
@@ -156,11 +163,13 @@ class CollectionStaticFactoryMethodsTest {
     letters.put("b", "B");
     letters.put("c", "C");
     letters = Collections.unmodifiableMap(letters);
+
     assertThat(letters).contains(entry("a", "A"), entry("b","B"), entry("c", "C"));
 
     // J9 code
     final Map<String, String> moreLetters =
       Map.ofEntries(Map.entry("a", "A"), Map.entry("b", "B"), Map.entry("c", "C"));
+
     assertThat(moreLetters).contains(entry("a", "A"), entry("b","B"), entry("c", "C"));
   }
 }
