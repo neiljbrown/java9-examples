@@ -30,7 +30,7 @@ import static org.assertj.core.api.Assertions.assertThat;
  * A JUnit (5) test case providing examples of the enhancements that have been made to {@link java.util.Optional} in
  * Java 9 (J9).
  */
-public class OptionalTypeTest {
+class OptionalTypeTest {
 
   /**
    * In J9, {@link java.util.Optional} has been extended to include the new {@link Optional#stream()} method that
