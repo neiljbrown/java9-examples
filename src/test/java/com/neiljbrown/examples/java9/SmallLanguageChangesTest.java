@@ -29,24 +29,26 @@ import static org.assertj.core.api.Assertions.assertThat;
 class SmallLanguageChangesTest {
 
   /**
-   * Java 9 now permits the use of private, instance or static, methods in interfaces. This allows
-   * non-abstract/concrete 'default' (public) and static interface methods, introduced in Java 8, to share common
-   * code without making that code public. (It is still the case that Java interfaces are stateless).
+   * Java 9 now permits the use of private, instance or static, methods in interfaces. This allows concrete 'default'
+   * (public) and static interface methods, introduced in Java 8, to share common code without making that code
+   * public. (It is still the case that Java interfaces are stateless).
    * <p>
    * For an example application of these new features see the {@link Logger} interface below.
    *
    * <h2>Evolution of Behaviour in Java interfaces</h2>
-   * Up to and including Java 7, interfaces could only contain public abstract methods - no behaviour. And 'public
-   * abstract' remains the default access modifiers for interface methods.
+   * Up to and including Java 7, interfaces could only contain public abstract methods - no behaviour. ('public
+   * abstract' remains the default access modifiers for interface methods).
    * <p>
-   * Java 8 changed this, adding support for behaviour in interfaces in two ways. Firstly, 'default' (aka 'extender')
-   * methods were added to support providing declaring a (public) abstract method with a default implementation. (The
-   * main motivation for this was to support extending interfaces in the standard Java library without breaking
-   * backwards compatibility, e.g. to retrofit Collection APIs with methods that accept Lambdas/Functional Interfaces).
-   * Secondly, Java 8 also permitted the use of concrete, public static (only) methods in interfaces. This removed the
-   * need to create companion static classes for utility methods. (For examples of Java 8 default methods see my
-   * <a href="https://bitbucket.org/neilbrown/java8-examples">java8-examples project</a>.). As noted above, Java 9
-   * has now taken this further, now also permitting the use of _private_, static or instance methods, in interfaces.
+   * Java 8 changed this, adding support for behaviour in interfaces in two ways. Firstly, 'default' methods were
+   * added to support declaring a (public) abstract method with a default implementation. (The main motivation for
+   * this was to support extending interfaces in the standard Java library without breaking backwards compatibility,
+   * e.g. to retrofit Collection APIs with methods that accept Lambdas/Functional Interfaces). Secondly, Java 8 also
+   * permitted the use of concrete, public static (only) methods in interfaces. This removed the need to create
+   * companion static classes for utility methods. (For examples of Java 8 default methods see my
+   * <a href="https://bitbucket.org/neilbrown/java8-examples">java8-examples project</a>.).
+   * <p>
+   * As noted above, Java 9 has now taken this further, now also permitting the use of _private_, static or instance
+   * methods, in interfaces.
    */
   @Test
   void privateMethodsInInterfaces() {
@@ -77,7 +79,7 @@ class SmallLanguageChangesTest {
     }
 
     // (From Java 8, interfaces could also include (implied public) static methods, removing the need to create
-    // companion static classes for utility methods. In Java 8 these methods could only be public).
+    // companion static classes for utility methods. (In Java 8 these methods could only be public).
     public static String buildInfoLogMessage(String message) {
       return Logger.buildLogMessage("[INFO]", message);
     }
