@@ -24,6 +24,8 @@ import java.util.concurrent.SubmissionPublisher;
 import java.util.stream.IntStream;
 
 /**
+ * A JUnit (5) test case providing examples of the standard implementation of Reactive Streams APIs in Java 9.
+ * <p>
  * <a href="http://www.reactive-streams.org/">Reactive Streams</a> is an initiative to define a standard for the async
  * exchange of data between components within an application, with the aim of making more efficient use of resources,
  * by avoiding blocking (waiting on I/O), and with support for flow-control between the data producer and consumer

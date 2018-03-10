@@ -24,7 +24,7 @@ import java.io.Writer;
 import static org.assertj.core.api.Assertions.assertThat;
 
 /**
- * A JUnit (5) test case containing examples of the enhancements that have been made to Java interfaces in Java 9 (J9).
+ * A JUnit (5) test case providing examples of the enhancements that have been made to Java interfaces in Java 9 (J9).
  */
 class JavaInterfaceEnhancementsTest {
 
