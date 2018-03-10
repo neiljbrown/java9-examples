@@ -24,9 +24,9 @@ import java.io.Writer;
 import static org.assertj.core.api.Assertions.assertThat;
 
 /**
- * Java 9 included a number of minor language enhancements. This class contains examples of some of them.
+ * A JUnit (5) test case containing examples of the enhancements that have been made to Java interfaces in Java 9 (J9).
  */
-class SmallLanguageChangesTest {
+class JavaInterfaceEnhancementsTest {
 
   /**
    * Java 9 now permits the use of private, instance or static, methods in interfaces. This allows concrete 'default'
