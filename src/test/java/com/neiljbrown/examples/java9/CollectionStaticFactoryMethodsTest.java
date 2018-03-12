@@ -36,7 +36,8 @@ import java.util.*;
  * There are no. of overloaded versions of these static factory methods each accepting an increasing no. of collection
  * elements, plus a varargs version of the method supporting an arbitrary no. of elements.
  */
-class CollectionStaticFactoryMethodsTest {
+// Declare class and test methods as public to support selectively documenting them using Javadoc.
+public class CollectionStaticFactoryMethodsTest {
 
   /**
    * Provides an example of how to use one of J9's static factory methods to simplify the code for creating an
@@ -48,7 +49,7 @@ class CollectionStaticFactoryMethodsTest {
    * Methods</a>.
    */
   @Test
-  void createImmutableList() {
+  public void createImmutableList() {
     // J8 code - typical verbosity
     List<String> letters = new ArrayList<>();
     letters.add("a");
@@ -86,7 +87,7 @@ class CollectionStaticFactoryMethodsTest {
    * Methods</a>.
    */
   @Test
-  void createImmutableSet() {
+  public void createImmutableSet() {
     // J8 code - Creating collections from values is verbose requiring multiple, separate statements to
     // create the collection, and one to add each value
     Set<String> letters = new HashSet<>();
@@ -116,7 +117,7 @@ class CollectionStaticFactoryMethodsTest {
    * @see #createImmutableMapFromEntries
    */
   @Test
-  void createImmutableMapFromKeyValuePairs() {
+  public void createImmutableMapFromKeyValuePairs() {
     // J8 code - typical verbosity
     Map<String, String> letters = new HashMap<>();
     letters.put("a", "A");
@@ -156,7 +157,7 @@ class CollectionStaticFactoryMethodsTest {
    * @see #createImmutableMapFromKeyValuePairs()
    */
   @Test
-  void createImmutableMapFromEntries() {
+  public void createImmutableMapFromEntries() {
     // J8 code - typical verbosity
     Map<String, String> letters = new HashMap<>();
     letters.put("a", "A");

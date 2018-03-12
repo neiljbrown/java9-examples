@@ -43,15 +43,18 @@ import java.util.stream.IntStream;
  * such a web-servers, data-stores, etc, rather than application developers. Application developers will instead
  * typically build on top of reactive frameworks that use these products.
  */
-class ReactiveStreamsApiTest {
+// Declare class and test methods as public to support selectively documenting them using Javadoc.
+public class ReactiveStreamsApiTest {
 
   /**
    * Provides a toy example of a reactive Publisher and Subscriber, which implement Java's standard version of the
-   * reactive APIs -{@link java.util.concurrent.Flow.Publisher} and {@link java.util.concurrent.Flow.Subscriber}
+   * reactive APIs - {@link java.util.concurrent.Flow.Publisher} and {@link java.util.concurrent.Flow.Subscriber}
    * - working together to produce and consume items, in a fully asynchronous, non-blocking manner, with flow-control.
+   *
+   * @throws Exception if an unexpected Exception occurs on execution of this test.
    */
   @Test
-  void testSimpleReactivePublisherAndSubscriber() throws Exception {
+  public void testSimpleReactivePublisherAndSubscriber() throws Exception {
     // Create an instance of reactive Publisher, using Java's out-of-the-box SubmissionPublisher implementation, that
     // publishes a stream of integers
     SubmissionPublisher<Integer> publisher = new SubmissionPublisher<>();
@@ -74,9 +77,11 @@ class ReactiveStreamsApiTest {
    * Processor API - {@link java.util.concurrent.Flow.Processor}, to intercept an item published by an upstream
    * reactive Publish, process (e.g. adapt, enrich or convert) it, before (re) publishing it to downstream reactive
    * Subscriber(s).
+   *
+   * @throws Exception if an unexpected Exception occurs on execution of this test.
    */
   @Test
-  void testSimpleReactiveProcessor() throws Exception {
+  public void testSimpleReactiveProcessor() throws Exception {
     // Create an instance of reactive Publisher, using Java's out-of-the-box SubmissionPublisher implementation, that
     // publishes a stream of integers
     SubmissionPublisher<Integer> publisher = new SubmissionPublisher<>();

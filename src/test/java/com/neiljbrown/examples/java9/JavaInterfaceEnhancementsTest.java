@@ -26,7 +26,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 /**
  * A JUnit (5) test case providing examples of the enhancements that have been made to Java interfaces in Java 9 (J9).
  */
-class JavaInterfaceEnhancementsTest {
+// Declare class and test methods as public to support selectively documenting them using Javadoc.
+public class JavaInterfaceEnhancementsTest {
 
   /**
    * Java 9 now permits the use of private, instance or static, methods in interfaces. This allows concrete 'default'
@@ -51,7 +52,7 @@ class JavaInterfaceEnhancementsTest {
    * methods, in interfaces.
    */
   @Test
-  void privateMethodsInInterfaces() {
+  public void privateMethodsInInterfaces() {
     // This test case is not particularly significant. Just see the Logger interface which it uses, declared below.
     final String logMessage = "Logged to writer.";
     final StringWriter stringWriter = new StringWriter();

@@ -56,7 +56,8 @@ import static org.assertj.core.api.Assertions.entry;
  * Support for applying a flat-map operation on a Stream at collection time, after also, first grouping the stream
  * elements at collection time. See {@link #flatMappingCollector()}.
  */
-class StreamApiEnhancementsTest {
+// Declare class and test methods as public to support selectively documenting them using Javadoc.
+public class StreamApiEnhancementsTest {
 
   /**
    * In Java 9, the Stream API has been extended to provide a new static method to support iteration -
@@ -72,7 +73,7 @@ class StreamApiEnhancementsTest {
    * traditional for-loop.
    */
   @Test
-  void iterateWithTerminationPredicate() {
+  public void iterateWithTerminationPredicate() {
     // In J8, the 2-arg Stream.iterate() method supports iterating over an infinite stream. Using this as a functional
     // equivalent of the traditional for-loop requires applying Stream.limit(), but this is only feasible if the
     // required no. of _iterations_ is known ahead of time - functional equivalent of 'for (int i = 0; i <= 9; i++)'
@@ -109,7 +110,7 @@ class StreamApiEnhancementsTest {
    * Java 8 added the {@link Stream#limit(long)} method to support only processing the first 'n' elements from a
    * stream, e.g. to convert an infinite stream to a finite one. However, this only supports cases where the no. of
    * elements to process is known ahead of time. (An example of why this can be a limitation is shown in
-   * test case {@link #iterateWithTerminationPredicate()}. In Java 9, the new {@link Stream#takeWhile(Predicate)
+   * test case {@link #iterateWithTerminationPredicate()}. In Java 9, the new {@link Stream#takeWhile(Predicate)}
    * method allows you to provide your own predicate for deciding when to stop processing elements from the Stream.
    * <p>
    * Note - This method is typically only used on an ordered Stream. If used on an unordered Stream you may miss
@@ -118,7 +119,7 @@ class StreamApiEnhancementsTest {
    * @see #dropWhile()
    */
   @Test
-  void takeWhile() {
+  public void takeWhile() {
     // Problem - Given a list of Payments, ordered by amount, select only those Payments with a amount less than 500
     final List<Payment> payments = List.of(new Payment(new BigDecimal("100.00")), new Payment(new BigDecimal("250.50")),
       new Payment(new BigDecimal("499.99")), new Payment(new BigDecimal("500.00")),
@@ -151,7 +152,7 @@ class StreamApiEnhancementsTest {
    * <p>
    * Java 8 added the {@link Stream#skip(long)} method to support discarding the first 'n' elements from a stream.
    * However, this only supports cases where the no. of elements to skip is known ahead of time. In Java 9, the new
-   * {@link Stream#dropWhile(Predicate) method allows you to provide your own predicate for deciding when to stop
+   * {@link Stream#dropWhile(Predicate)} method allows you to provide your own predicate for deciding when to stop
    * discarding and start processing elements from the Stream.
    * <p>
    * Note - This method is typically only used on an ordered Stream. If used on an unordered Stream you may end up
@@ -160,7 +161,7 @@ class StreamApiEnhancementsTest {
    * @see #takeWhile()
    */
   @Test
-  void dropWhile() {
+  public void dropWhile() {
     // Problem - Given a list of Payments, ordered by amount, select only those  with an amount greater or equal to 500
     final List<Payment> payments = List.of(new Payment(new BigDecimal("100.00")), new Payment(new BigDecimal("250.50")),
       new Payment(new BigDecimal("499.99")), new Payment(new BigDecimal("500.00")),
@@ -229,7 +230,7 @@ class StreamApiEnhancementsTest {
    * Stream API to find the first System property that exists in a list of System properties.
    */
   @Test
-  void ofNullable() {
+  public void ofNullable() {
     final String nonExistentSystemProperty = "my.home." + Instant.now().toString();
     final String[] userHomeSystemPropertyNames = new String[]{nonExistentSystemProperty, "user.home"};
 
@@ -284,7 +285,7 @@ class StreamApiEnhancementsTest {
    * collection time, after a group-by operation, as described in test {@link #flatMappingCollector()}.
    */
   @Test
-  void filteringCollector() {
+  public void filteringCollector() {
     // Example requirement - Generate a report of Expenses, grouped by month, which details only Expenses of 1k or more.
     final List<Expense> expenses = List.of(
       new Expense(1, "breakfast", new BigDecimal("4.50"), Month.JANUARY),
@@ -331,7 +332,7 @@ class StreamApiEnhancementsTest {
    * collection time, after a group-by operation, as described in test {@link #filteringCollector()}.
    */
   @Test
-  void flatMappingCollector() {
+  public void flatMappingCollector() {
     // Example requirement - Generate a report of Expenses, grouped by month, which contains only the unique tags
     final List<Expense> expenses = List.of(
       new Expense(1, "breakfast", new BigDecimal("4.50"), Month.JANUARY, List.of("food")),

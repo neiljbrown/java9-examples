@@ -29,6 +29,8 @@ import java.util.stream.Stream;
 import static org.assertj.core.api.Assertions.assertThat;
 
 /**
+ * A JUnit (5) test case providing examples of the enhancements that have been made to the Process API in Java 9.
+ * <p>
  * Java 9 has been extended to make it easier to query (find and list) and obtain info about native processes. The
  * support is provided by the new {@link ProcessHandle} interface. Some of these new features have also been exposed
  * by adding new methods to the existing {@link Process} (abstract) class.
@@ -57,7 +59,8 @@ import static org.assertj.core.api.Assertions.assertThat;
  * has added one new method to this class which supports chaining together the execution of a series of processes,
  * linking them by their standard output and input streams. See {@link ProcessBuilder#startPipeline(List)}.
  */
-class ProcessApiTest {
+// Declare class and test methods as public to support selectively documenting them using Javadoc.
+public class ProcessApiTest {
 
   /**
    * Provides an example of how to use the new {@link ProcessHandle} interface to discover the PID of a process.
@@ -68,7 +71,7 @@ class ProcessApiTest {
    * obtaining the ProcessHandle of the parent process, if there is one.
    */
   @Test
-  void getCurrentPid() {
+  public void getCurrentPid() {
     // Use ProcessHandle factory method to obtain a ProcessHandle for the current process
     final ProcessHandle processHandle = ProcessHandle.current();
     final long pid = processHandle.pid();
@@ -86,7 +89,7 @@ class ProcessApiTest {
    * system permission to access them.
    */
   @Test
-  void getCurrentProcessInfo() {
+  public void getCurrentProcessInfo() {
     // Get process info for current process
     final ProcessHandle.Info processInfo = ProcessHandle.current().info();
 
@@ -121,7 +124,7 @@ class ProcessApiTest {
    * In this example, a list of the 'n' most recently started processes is queried and sorted.
    */
   @Test
-  void queryMostRecentlyStartedProcesses() {
+  public void queryMostRecentlyStartedProcesses() {
     // Get a stream over all the current processes (at least those visible to the current process)
     final Stream<ProcessHandle> allProcesses = ProcessHandle.allProcesses();
 

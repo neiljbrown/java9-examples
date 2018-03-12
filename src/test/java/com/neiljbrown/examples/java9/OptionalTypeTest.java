@@ -30,7 +30,8 @@ import static org.assertj.core.api.Assertions.assertThat;
  * A JUnit (5) test case providing examples of the enhancements that have been made to {@link java.util.Optional} in
  * Java 9 (J9).
  */
-class OptionalTypeTest {
+// Declare class and test methods as public to support selectively documenting them using Javadoc.
+public class OptionalTypeTest {
 
   /**
    * In J9, {@link java.util.Optional} has been extended to include the new {@link Optional#stream()} method that
@@ -39,7 +40,7 @@ class OptionalTypeTest {
    * values to a Stream of Optional with present value.
    */
   @Test
-  void optionalStream() {
+  public void optionalStream() {
     // Example use-case/requirement - Given a list of system properties defining a user's home directory, return the
     // value of the first property that exists with a value
 
@@ -79,7 +80,7 @@ class OptionalTypeTest {
    * This new method is useful in cases where you want to use a fallback method that also returns an Optional.
    */
   @Test
-  void optionalOr() {
+  public void optionalOr() {
     // Example requirement - Find the details of a company by name in your DB, and if it doesn’t exist, look up the
     // company using an external service. In both cases, if the name isn’t valid, the company may not be found, as
     // indicated by the return of an Optional
@@ -108,7 +109,7 @@ class OptionalTypeTest {
    * functional interfaces (Consumer or Runnable) invoked by the method can return a value.
    */
   @Test
-  void optionalIfPresentOrElse() {
+  public void optionalIfPresentOrElse() {
     // An example scenario in which Optional.ifPresentOrElse() would be useful is using a default value in the event
     // that an entity wasn't found, e.g.
     CompanyDao dao = new CompanyDao();

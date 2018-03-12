@@ -68,7 +68,7 @@ dependencies {
   testCompile("org.junit.jupiter:junit-jupiter-api:${junitJupiterVersion}")
   // Workaround for JUnit 5 bug. Suppress warnings output on compiling test classes reporting that classes (enums) that
   // JUnit 5 depends upon can't be found. See https://github.com/junit-team/junit5/issues/1065
-  testCompileOnly('org.apiguardian:apiguardian-api:1.0.0')
+  testCompile('org.apiguardian:apiguardian-api:1.0.0')
   testCompile('ch.qos.logback:logback-classic:1.2.3')
   testCompile('org.assertj:assertj-core:3.8.0')
 
