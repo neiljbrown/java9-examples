@@ -59,7 +59,7 @@ To generate the Javadoc, use the following command:
 
 ```mvn javadoc:test-javadoc```
 
-The generated Javadoc can be found in the standard location for a Maven project - /target/site/testapidocs/index.html.
+The generated Javadoc can be found in the standard location for a Maven project - target/site/testapidocs/index.html.
 
 ## Other Examples
 You can find similar code examples for the new features introduced in earlier Java versions (e.g. 7 and 8) in my 
