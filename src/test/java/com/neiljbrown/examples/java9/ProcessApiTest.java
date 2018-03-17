@@ -104,7 +104,8 @@ public class ProcessApiTest {
     // Arguments supplied on launching process
     final Optional<String[]> optionalArgs = processInfo.arguments();
     if (optionalArgs.isPresent()) {
-      final Optional<String> junitArg = Stream.of(optionalArgs.get()).filter(arg -> arg.matches(".*junit.*")).findFirst();
+      final Optional<String> junitArg =
+        Stream.of(optionalArgs.get()).filter(arg -> arg.matches("(?i).*java.*")).findFirst();
       assertThat(junitArg).isPresent();
     }
 
